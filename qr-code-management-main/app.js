@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
 const { authRateLimiter, qrRateLimiter, generalRateLimiter } = require('./middleware/rateLimiter');
+const swaggerDocs = require('./swagger');
+swaggerDocs(app); // Initialize Swagger UI
 
 require('dotenv').config(); // Load environment variables
 

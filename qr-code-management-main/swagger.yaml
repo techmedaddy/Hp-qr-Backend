@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: QR Code Management API
+  version: 1.0.0
+  description: API documentation for the QR Code Management System
+servers:
+  - url: http://localhost:3000
+    description: Local server
+paths:
+  /auth/login:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+        '400':
+          description: Bad request
+  /qr/static:
+    post:
+      summary: Generate a static QR code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                initialURL:
+                  type: string
+                metadata:
+                  type: object
+      responses:
+        '201':
+          description: QR Code generated
+        '400':
+          description: Bad request
