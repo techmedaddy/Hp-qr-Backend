@@ -57,6 +57,7 @@ Ensure the following tools are installed on your system:
    ```bash
    git clone <repository-url>
    cd qr-code-management
+```
 ### Project structure
 
 ```bash
