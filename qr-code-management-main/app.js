@@ -3,8 +3,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
 const { authRateLimiter, qrRateLimiter, generalRateLimiter } = require('./middleware/rateLimiter');
-const swaggerDocs = require('./swagger');
-swaggerDocs(app); // Initialize Swagger UI
 
 require('dotenv').config(); // Load environment variables
 
@@ -30,6 +28,10 @@ app.use('/auth', userRoutes); // Authentication routes
 app.use('/qr', qrCodeRoutes); // QR Code management routes
 app.use('/events', eventRoutes); // Event tracking routes
 app.use('/analytics', analyticsRoutes); // Analytics routes
+
+// Initialize Swagger AFTER defining 'app'
+const swaggerDocs = require('./swagger');
+swaggerDocs(app);
 
 // Health check route
 app.get('/', (req, res) => {
